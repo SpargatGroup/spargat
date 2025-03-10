@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Blockman Launcher</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <style>
+        @font-face {
+            font-family: 'BL1';
+            src: url('bl1.otf') format('opentype');
+        }
+
+        body {
+            background: linear-gradient(to bottom, #20000b, #21001e);
+            font-family: 'BL1', Arial, sans-serif;
+            text-align: left;
+            color: white;
+            margin: 0;
+            padding: 0;
+            cursor: url('c:\Users\danil_e1oazrp\Downloads\SpargatGroup\cursor.png'), auto;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: black;
+        }
+
+        .navbar img {
+            height: 40px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar a.tos {
+            font-weight: bold;
+            color: purple;
+        }
+
+        .navbar a:hover {
+            color: orange;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            animation: fadeIn 1s ease-in-out;
+            padding-top: 100px;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            color: purple;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px 0;
+            animation: slideIn 0.5s ease-in-out;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: orange;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-top: 10px;
+        }
+
+        .last-updated {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 50px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .navbar a {
+                margin: 10px 0;
+            }
+        }
+
+        .subscribe-bar {
+            background: purple;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .subscribe-button {
+            background: red;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .subscribe-button:hover {
+            background: darkred;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-button:hover {
+            color: red;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">
+            <img src="logo_home.png" alt="Logo">
+        </a>
+        <a href="home.html">Home</a>
+        <a href="home.html#about">About-us</a>
+        <a href="#" class="tos">TOS</a>
+    </div>
+    
+    <div class="subscribe-bar">
+        <button class="close-button" onclick="closeSubscribeBar()">&times;</button>
+        SUBSCRIBE TO BLOCKMAN LAUNCHER IN YOUTUBE! <a href="https://www.youtube.com/channel/UCWrz10YzSZUqfIBq4gfGDKw/sub_confirmation=1" class="subscribe-button">SUBSCRIBE</a>
+    </div>
+
+    <div class="container">
+        <div class="title">Blockman Launcher - Terms of Service</div>
+        <div class="last-updated">Last Updated: January 2, 2025</div>
+
+        <div class="section">
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing or using Blockman Launcher, you agree to be bound by these Terms of Service. If you do not agree with these terms, please do not use our service.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. User Accounts</h2>
+            <p>2.1 You are responsible for maintaining the confidentiality of your account and password.</p>
+            <p>2.2 You agree to accept responsibility for all activities that occur under your account.</p>
+            <p>2.3 You agree to accept responsibility for don't use an Founder or Owner name.</p>
+        </div>
+
+        <div class="section">
+            <h2>3. User Conduct</h2>
+            <p>3.1 You agree not to use the service for any illegal or unauthorized purpose.</p>
+            <p>3.2 Harassment, abuse, or threatening behavior is strictly prohibited.</p>
+        </div>
+
+        <div class="section">
+            <h2>4. Intellectual Property</h2>
+            <p>4.1 All content and software in Blockman Launcher are the property of the Blockman Launcher team.</p>
+            <p>4.2 You may not reproduce, distribute, or create derivative works without explicit permission.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. Privacy</h2>
+            <p>5.1 Your use of Blockman Launcher is also governed by our Privacy Policy.</p>
+            <p>5.2 We collect and use personal information as described in our Privacy Policy.</p>
+        </div>
+
+        <div class="section">
+            <h2>6. Limitation of Liability</h2>
+            <p>6.1 Blockman Launcher is provided "as is" without any warranties.</p>
+            <p>6.2 We are not liable for any direct, indirect, incidental, or consequential damages.</p>
+        </div>
+
+        <div class="section">
+            <h2>7. Modifications to Terms</h2>
+            <p>7.1 We reserve the right to modify these terms at any time.</p>
+            <p>7.2 Continued use of the service after changes constitutes acceptance of new terms.</p>
+        </div>
+
+        <div class="section">
+            <h2>8. Termination</h2>
+            <p>8.1 We may terminate or suspend your account at our discretion.</p>
+            <p>8.2 Reasons for termination may include violation of these terms or suspicious activity.</p>
+        </div>
+
+        <div class="section">
+        
+            <h2>9. Contact Information</h2>
+            <p>For any questions about these terms, contact us at: <a href="mailto:blockmanlauncher@gmail.com" style="color: #fff; text-decoration: underline;">blockmanlauncher@gmail.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        function closeSubscribeBar() {
+            document.querySelector('.subscribe-bar').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spargat Group & Netherotiam Team</title>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'BL1';
+            src: url('bl1.otf') format('opentype');
+        }
+
+        /* General Custom Cursor */
+        body {
+            background: linear-gradient(to bottom, #20000b, #21001e);
+            font-family: 'BL1', Arial, sans-serif;
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            cursor: url('c:\Users\danil_e1oazrp\Downloads\SpargatGroup\cursor.png'), auto; /* Absolute path */
+            animation: fadeIn 1s ease-in-out;
+            padding-top: 120px; /* 60px for navbar + 60px for subscribe bar */
+        }
+
+        /* Custom Cursor on Links and Buttons (Hover) */
+        a:hover, .button:hover, .discord-button:hover {
+            cursor: url('c:\Users\danil_e1oazrp\Downloads\SpargatGroup\cursor-hand.png'), pointer; /* Absolute path */
+        }
+
+        /* Custom Cursor on Input Fields or Text Areas */
+        input, textarea {
+            cursor: url('c:\Users\danil_e1oazrp\Downloads\SpargatGroup\cursor-type.png'), text; /* Absolute path */
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: black;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            animation: slideIn 1s ease-in-out;
+            height: 60px;
+        }
+
+        .navbar img {
+            height: 40px;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar a.home {
+            font-weight: bold;
+            color: red;
+        }
+
+        .navbar a:hover {
+            color: orange;
+        }
+
+        .subscribe-bar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 999;
+            transition: all 0.3s ease-in-out;
+            border-bottom: 1px solid purple;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subscribe-bar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .subscribe-bar .subscribe-button {
+            background: purple;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+
+        .subscribe-bar .subscribe-button:hover {
+            background: darkviolet;
+            transform: scale(1.05);
+        }
+
+        .subscribe-bar .close-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0 5px;
+            transition: color 0.3s;
+        }
+
+        .subscribe-bar .close-button:hover {
+            color: purple;
+        }
+
+        .content-section {
+            padding: 20px;
+            margin-top: 60px; /* Space for navbar */
+        }
+
+        #home {
+            padding-top: 40px;
+        }
+
+        #about {
+            margin-top: 40px;
+        }
+
+        .container {
+            padding: 50px 20px;
+            animation: fadeIn 2s ease-in-out;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .project-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            color: purple;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .subtitle {
+            color: orange;
+            font-size: 16px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .button {
+            display: block;
+            background: purple;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 20px;
+            width: 200px;
+            margin: 10px auto;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .button:hover {
+            background: darkviolet;
+            transform: scale(1.05);
+        }
+
+        .discord-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: purple;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 20px;
+            width: 200px;
+            margin: 10px auto;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .discord-button img {
+            width: 35px;  /* Increased from 24px */
+            height: 32px; /* Increased from 24px */
+            margin-right: 10px;
+        }
+
+        .discord-button:hover {
+            background: darkviolet;
+            transform: scale(1.05);
+        }
+
+        .donate-button {
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background 0.3s, transform 0.2s;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .donate-button:hover {
+            background: darkgreen;
+            transform: scale(1.05);
+        }
+
+        /* Chat Button and Interface */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: purple;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.2s;
+            z-index: 1000;
+        }
+        .chat-button:hover {
+            transform: scale(1.1);
+            background: darkviolet;
+            transition: all 0.3s ease;
+        }
+        .chat-interface {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 400px;
+            height: 500px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            transform: scale(0);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .chat-interface.visible {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .chat-interface.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            box-shadow: none;
+            z-index: 9999;
+            transform: scale(1) !important;
+        }
+        .chat-header {
+            background: purple;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-header h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background: #2a2a2a;
+        }
+        .message {
+            max-width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+        .bot-message {
+            background: purple;
+            color: white;
+            align-self: flex-start;
+        }
+        .user-message {
+            background: darkviolet;
+            color: white;
+            align-self: flex-end;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background: #1e1e1e;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #2a2a2a;
+            color: white;
+        }
+        .chat-input button {
+            background: purple;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            transform: scale(1.1);
+            background: darkviolet;
+            transition: all 0.3s ease;
+        }
+        .fullscreen-btn:hover {
+            transform: scale(1.1);
+            color: darkviolet;
+            transition: all 0.3s ease;
+        }
+
+        .typing-indicator {
+            display: flex;
+            padding: 10px;
+            gap: 5px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: purple;
+            border-radius: 50%;
+            animation: typingBounce 1s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .generating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .chat-message {
+            animation: messageSlideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .navbar a {
+                margin: 10px 0;
+            }
+            .container {
+                padding: 20px 10px;
+            }
+            .button, .discord-button {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .social-media {
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-family: 'BL1', Arial, sans-serif;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: purple;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, background 0.3s;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            background: darkviolet;
+        }
+
+        .chat-button i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            display: none;
+            flex-direction: column;
+            animation: slideIn 0.3s ease;
+            border: 1px solid purple;
+            transition: all 0.3s ease;
+        }
+
+        .chat-container.fullscreen {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            z-index: 9999;
+        }
+
+        .chat-header {
+            padding: 15px;
+            background: purple;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-header img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .chat-header .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+
+        .chat-header button:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .chat-header button i {
+            font-size: 18px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            max-width: 80%;
+            animation: messageIn 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .bot-message {
+            background: rgba(128, 0, 128, 0.3);
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-right: auto;
+            margin-left: 10px;
+            color: white;
+            border: 1px solid purple;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background: purple;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-left: auto;
+            margin-right: 10px;
+            align-self: flex-end;
+        }
+
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid purple;
+            display: flex;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .chat-container.fullscreen .chat-input {
+            border-radius: 0;
+        }
+
+        .chat-container.fullscreen .chat-header {
+            border-radius: 0;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid purple;
+            border-radius: 20px;
+            margin-right: 10px;
+            outline: none;
+            color: white;
+            background: rgba(128, 0, 128, 0.2);
+        }
+
+        .chat-input input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .chat-input button {
+            background: purple;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .chat-input button:hover {
+            background: darkviolet;
+            transform: scale(1.05);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">
+            <img src="logo_home.png" alt="Logo">
+        </a>
+        <a href="#home" class="home">Home</a>
+        <a href="#about">About-us</a>
+        <a href="tos.html">TOS</a>
+    </div>
+    <div class="subscribe-bar">
+        <button class="close-button" onclick="closeSubscribeBar()">&times;</button>
+        SUBSCRIBE TO BLOCKMAN LAUNCHER IN YOUTUBE! <a href="https://www.youtube.com/channel/UCWrz10YzSZUqfIBq4gfGDKw/sub_confirmation=1" class="subscribe-button">SUBSCRIBE</a>
+    </div>
+
+    <section id="home" class="content-section">
+        <div class="container">
+            <img src="ic_website_logo_bl.png" alt="Blockman Launcher" class="project-logo" loading="lazy">
+            <div class="title">Blockman Launcher</div>
+            <div class="subtitle">Our Biggest Project Yet;</div>
+            <a href="https://especially-endless-katydid.ngrok-free.app/" class="button">VISIT</a>
+            <a href="https://discord.gg/cgau2NXP6q" class="discord-button">
+                <img src="discord.png" alt="Discord" loading="lazy"> JOIN DISCORD
+            </a>
+            <a href="donate.html" class="donate-button">$ Donate</a>
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p>For any questions about these terms, contact us at: <a href="mailto:blockmanlauncher@gmail.com">Send a mail to us</a></p>
+            </div>
+            <div class="social-media">
+                <a href="https://www.youtube.com/channel/UCWrz10YzSZUqfIBq4gfGDKw" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="title">About Blockman Launcher</div>
+            <div class="subtitle">A project to bring Blockman GO Web back to life!</div>
+            <p>Blockman Launcher is a project made by the Spargat Group & Netherotiam Team to revive Blockman GO Web back to life using their own private servers for Android, PC, MacOS, and more.</p>
+            
+            <div class="team-section">
+                <h2>Our Team</h2>
+                <img src="logo_home.png" alt="Team Logo" loading="lazy">
+                <p>The Spargat Group & Netherotiam Team is a group of players working on the launcher, servers, games, and more.</p>
+                <!-- ...rest of team section... -->
+            </div>
+
+            <div class="game-section">
+                <h2>Our Project</h2>
+                <img src="ic_website_logo_bl.png" alt="Blockman Launcher Logo" loading="lazy">
+                <p>We are working to bring Blockman GO Web back with new features and improvements for all platforms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Button and Interface -->
+    <div id="chat-button" class="chat-button">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div id="chat-interface" class="chat-interface">
+        <div class="chat-header">
+            <div class="left">
+                <img src="ai_logo.png" alt="AI Icon" style="height: 30px; width: 30px; margin-right: 10px;">
+                <h3>Assistant</h3>
+            </div>
+            <div class="controls">
+                <button id="fullscreen-chat"><i class="fas fa-expand"></i></button>
+                <button id="close-chat"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div id="chat-messages" class="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        function closeSubscribeBar() {
+            document.querySelector('.subscribe-bar').classList.add('hidden');
+        }
+    </script>
+    <script src="chatbot.js"></script>
+</body>
+</html>
