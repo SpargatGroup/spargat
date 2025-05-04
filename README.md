@@ -1,101 +1,78 @@
-# Chat Application with Ollama Integration
+# Spargat AI Chat 🚀
 
-This is a modern chat application built with React, TypeScript, and Vite that integrates with [Ollama](https://ollama.com/) to provide AI-powered chat capabilities using local language models.
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-blue?style=for-the-badge&logo=github)](https://spargatgroup.github.io/spargat/)
+[![Open Beta](https://img.shields.io/badge/Status-Open%20Beta-purple?style=for-the-badge)](https://spargatgroup.github.io/spargat/)
 
-## Features
+An AI-powered chat application built with React and Google's Gemini 1.5 Flash model. Featuring real-time code execution, reflection capabilities, and an interactive code chalkboard.
 
-- 💬 Real-time AI chat powered by Ollama
-- 🏠 Local AI processing - no data sent to external APIs
-- 🧠 Uses Gemma 7B by default (configurable to other models)
-- 💾 Save and load conversations with unique generated codes
-- 🌙 Dark mode UI with responsive design
-- 🖥️ Code syntax highlighting and execution
-- 📱 Mobile-friendly interface
+![Spargat AI Demo](https://i.ibb.co/VJy5Psn/spargat-demo.png)
 
-## Prerequisites
+## ✨ Demo Features
 
-- Node.js 16+
-- Ollama installed on your system (see installation instructions below)
+### 💬 Interactive Chat with Reflection
+Get detailed AI responses with visible thinking processes:
 
-## Installation
+```
+User: Explain how React hooks work
 
-1. Clone the repository
-2. Install dependencies:
+AI: [Enhanced with reflection]
+React hooks are functions that let you "hook into" React state and lifecycle features...
+```
 
+### 🖥️ Code Execution with Chalkboard
+Execute code directly in the chat or send to interactive editor:
+
+![Code Chalkboard Demo](https://i.ibb.co/S74dC15/code-chalkboard.png)
+
+```javascript
+// -execute
+const calculateFibonacci = (n) => {
+  const sequence = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    sequence[i] = sequence[i-1] + sequence[i-2];
+  }
+  return sequence[n];
+}
+
+console.log(calculateFibonacci(10)); // 55
+```
+
+### 🧠 Auto-Detection Directives
+Use simple directives to trigger actions:
+- `-execute` - Run code automatically
+- `-chalkboard` - Send to code editor
+- `// execute` or `// chalkboard` - Alternative syntax
+
+### 🔎 Web Search Integration
+Integrated Google search for up-to-date information.
+
+## 🚀 Quick Start
+
+### Try it live
+Visit the [live demo](https://spargatgroup.github.io/spargat/)
+
+### Run locally
 ```bash
+# Clone the repository
+git clone https://github.com/SpargatGroup/spargat.git
+
+# Install dependencies
+cd spargat
 npm install
-```
 
-3. Set up Ollama:
+# Add environment variables (.env)
+VITE_GEMINI_API_KEY=your_gemini_api_key
+VITE_GOOGLE_CSE_ID=your_google_cse_id
 
-```bash
-npm run setup:ollama
-```
-
-This script will check if Ollama is installed on your system and guide you through the installation process if it's not.
-
-4. Download the required Ollama model:
-
-```bash
-ollama pull gemma:7b
-```
-
-## Getting Started
-
-1. Start Ollama:
-
-```bash
-npm run start:ollama
-```
-
-2. In a new terminal, start the application:
-
-```bash
+# Start development server
 npm run dev
 ```
 
-3. Open your browser and navigate to the URL shown in the terminal (usually http://localhost:5173)
+## ⚠️ Beta Status
+This is an open beta release. Always verify code responses before using in production.
 
-## Using with Ollama
+## 📱 Responsive Design
+Fully optimized for both desktop and mobile devices.
 
-The application is configured to communicate with Ollama running on `http://localhost:11434`. You can:
-
-- Check Ollama status: `npm run check:ollama`
-- Start Ollama: `npm run start:ollama`
-- Use different models by changing the `DEFAULT_MODEL` value in `src/services/ai.ts`
-
-For more detailed information on using Ollama with this application, see [OLLAMA.md](./OLLAMA.md).
-
-## Chat Features
-
-- **Save chats**: Generate a unique 6-character code to save your current conversation
-- **Load chats**: Restore a previous conversation using its code
-- **Clear chat**: Start a fresh conversation
-- **Code highlighting**: Syntax highlighting for code blocks
-- **Conversation context**: AI responses consider previous messages for better context
-
-## Project Structure
-
-- `src/components/` - React components
-- `src/context/` - React context providers
-- `src/pages/` - Page components
-- `src/services/` - Service logic including Ollama API
-- `src/utils/` - Utility functions
-- `scripts/` - Ollama setup and management scripts
-
-## Development
-
-- Build for production: `npm run build`
-- Preview production build: `npm run preview`
-- Lint code: `npm run lint`
-
-## License
-
-MIT
-
-## Acknowledgements
-
-- [Ollama](https://ollama.com/) for providing the local AI model infrastructure
-- [Gemma](https://gemmachat.ai/) for the open language model
-- [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for the development framework
-- [Tailwind CSS](https://tailwindcss.com/) for styling 
+## 📜 License
+MIT 
